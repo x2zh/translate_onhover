@@ -1,12 +1,14 @@
 {
   "scripts": {
-    "build": "NODE_ENV=production webpack && zip -FS -r -j translate_onhover dist",
+    "build": "NODE_ENV=production webpack --display-error-details && zip -FS -r -j build/translate_onhover.zip build/dist",
     "dev": "webpack --watch",
     "lint": "eslint --ignore-pattern dist ."
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
     "@babel/plugin-transform-classes": "^7.4.4",
+    "@types/chrome": "^0.0.122",
+    "@types/node": "^14.6.0",
     "babel-loader": "^8.0.5",
     "clean-webpack-plugin": "^1.0.0",
     "copy-webpack-plugin": "^4.6.0",

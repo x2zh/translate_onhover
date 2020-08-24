@@ -8,15 +8,15 @@ const config = {
   devtool: 'inline-source-map',
   mode,
   entry: {
-    background: './background.js',
-    contentscript: './contentscript.js',
-    options_script: './lib/options_script.js',
-    tat_popup: './lib/tat_popup.js',
-    popup: './lib/popup.js'
+    background: './src/background.js',
+    contentscript: './src/contentscript.js',
+    options_script: './src/lib/options_script.js',
+    tat_popup: './src/lib/tat_popup.js',
+    popup: './src/lib/popup.js'
   },
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'build/dist')
   },
   module: {
     rules: [
@@ -33,16 +33,29 @@ const config = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
-    new CopyWebpackPlugin([
-      'manifest.json',
-      '*.png',
-      'options.html',
-      'lib/popup.html',
-      'lib/tat_popup.html',
-      'node_modules/jquery/dist/jquery.min.js',
-      'node_modules/xregexp/xregexp-all.js'
-    ], {to: 'dist'})
+    new CleanWebpackPlugin(['build']),
+    new CopyWebpackPlugin(
+      [
+        'manifest.json',
+        'options.html',
+        'src/lib/popup.html',
+        'src/lib/tat_popup.html',
+        'node_modules/jquery/dist/jquery.min.js',
+        'node_modules/xregexp/xregexp-all.js',
+        'src/refresh_blue.png',
+        'src/refresh_grey.png',
+        'src/to_128.png',
+        'src/to_16.png',
+        'src/to_19.png',
+        'src/to_38.png',
+        'src/to_48.png',
+        'src/to_bw_19.png',
+        'src/to_bw_38.png',
+      ],
+      {
+        to: 'build/dist',
+      }
+    )
   ]
 }
 
